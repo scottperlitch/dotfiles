@@ -1,0 +1,5 @@
+--colors=path:fg:green
+--no-ignore-vcs
+--max-columns=150
+--max-columns-preview
+--fixed-strings
