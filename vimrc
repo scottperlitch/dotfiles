@@ -49,10 +49,10 @@ inoremap {<cr> {<cr>}<esc>O
 vnoremap // y/<c-r>"<cr>
 
 " Reload vimrc
-nnoremap <leader>v :source $MYVIMRC<cr>
+nnoremap <leader>r :source $MYVIMRC<cr>
 
 " edit vimrc
-nnoremap <leader>j :edit $MYVIMRC<cr>
+nnoremap <leader>e :edit $MYVIMRC<cr>
 
 " alernate file
 nnoremap <leader>d :edit #<cr>
@@ -74,7 +74,6 @@ nnoremap <leader>h :bprevious<cr>
 " ------------------------------------------------
 
 call plug#begin('~/.vim/plugged')
-Plug 'wincent/ferret'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
