@@ -10,6 +10,7 @@ alias dump="composer dump-autoload"
 alias desk="cd $HOME/Desktop"
 alias proj="cd $HOME/Projects"
 alias sites="cd $HOME/Projects/Sites"
+alias o="open ."
 
 # ------------------------------------------------
 # gem
@@ -19,6 +20,7 @@ export GEM_HOME="$HOME/.gem"
 # ------------------------------------------------
 # git
 # ------------------------------------------------
+alias d="git difftool"
 alias g="git status"
 alias diff="git difftool"
 alias gmod="vim \$(git ls-files -m)"
@@ -71,6 +73,7 @@ v() {
 # ------------------------------------------------
 # zshrc
 # ------------------------------------------------
+alias c="vim ~/.zshrc"
 alias zshrc="vim ~/.zshrc"
 
 # ------------------------------------------------
