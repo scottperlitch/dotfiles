@@ -79,4 +79,5 @@ alias zshrc="vim ~/.zshrc"
 # ------------------------------------------------
 # zshrc.local
 # ------------------------------------------------
+alias lc="vim ~/.zshrc.local"
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local

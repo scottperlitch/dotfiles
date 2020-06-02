@@ -86,7 +86,9 @@ let g:vue_pre_processors = []
 
 " fzf.vim
 nnoremap <leader>a :Files!<cr>
-nnoremap <leader>s :History!<cr>
+nnoremap <leader>A :GFiles!<cr>
+nnoremap <leader>s :Buffers!<cr>
+nnoremap <leader>S :History!<cr>
 nnoremap <leader>t yiw:Tags <c-r>" <cr>
 nnoremap <leader>f :Rg!<Space>
 nnoremap <leader>F yiw:Rg! <c-r>"
