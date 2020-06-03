@@ -6,7 +6,7 @@
 unlet! skip_defaults_vim
 silent! source $VIMRUNTIME/defaults.vim
 
-" 3 tags
+" 3 Tags
 set tags^=.git/tags
 
 " ------------------------------------------------
@@ -38,35 +38,35 @@ vnoremap <leader>w :write!<cr>
 nnoremap <leader>q :quit<cr>
 nnoremap <leader>Q :quitall<cr>
 
-" yank until end of line
+" Yank until end of line
 nnoremap Y y$
 nnoremap <leader>Y "*y$
 
 " Auto close brackets on carriage return
 inoremap {<cr> {<cr>}<esc>O
 
-" search buffer for visually selected text
+" Search buffer for visually selected text
 vnoremap // y/<c-r>"<cr>
 
 " Reload vimrc
 nnoremap <leader>r :source $MYVIMRC<cr>
 
-" edit vimrc
+" Edit vimrc
 nnoremap <leader>e :edit $MYVIMRC<cr>
 
-" alernate file
+" Alernate file
 nnoremap <leader>d :edit #<cr>
 
-" open project root directory
+" Open project root directory
 nnoremap <leader>o :!open .<cr>
 
-" open current files parent directory
+" Open current files parent directory
 nnoremap <leader>O :!open %:h<cr>
 
-" buffer next
+" Buffer next
 nnoremap <leader>l :bnext<cr>
 
-" buffer previous
+" Buffer previous
 nnoremap <leader>h :bprevious<cr>
 
 " ------------------------------------------------
@@ -81,10 +81,10 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'tomtom/tcomment_vim'
 call plug#end()
 
-" vim-polyglot
+" Vim-polyglot
 let g:vue_pre_processors = []
 
-" fzf.vim
+" Fzf.vim
 nnoremap <leader>a :Files!<cr>
 nnoremap <leader>A :GFiles!<cr>
 nnoremap <leader>s :Buffers!<cr>
