@@ -26,6 +26,7 @@ alias diff="git difftool"
 alias gmod="vim \$(git ls-files -m)"
 alias gnew="vim \$(git ls-files --others --exclude-standard)"
 alias gco="git checkout"
+alias gpo="git push origin"
 
 # ------------------------------------------------
 # laravel
@@ -33,6 +34,8 @@ alias gco="git checkout"
 alias tinker="php artisan tinker"
 alias artisan="php artisan"
 alias rollback="php artisan migrate:rollback"
+alias migrate="php artisan migrate"
+alias seed="php artisan db:seed"
 
 # ------------------------------------------------
 # oh-my-zsh

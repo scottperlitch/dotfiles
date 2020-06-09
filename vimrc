@@ -77,7 +77,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
-Plug 'editorconfig/editorconfig-vim'
+Plug 'scottperlitch/editorconfig-vim', { 'branch' : 'keep-filename' }
 Plug 'tomtom/tcomment_vim'
 call plug#end()
 
