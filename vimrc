@@ -16,6 +16,9 @@ set tags^=.git/tags
 " Set leader key
 let mapleader=','
 
+" Repeat latest f (etc) in opposite direction
+nnoremap \ ,
+
 " Paste and indent
 nnoremap p p=`]
 
