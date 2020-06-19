@@ -1,0 +1,11 @@
+[user]
+	name = Scott Perlitch
+	email = scottperlitch@gmail.com
+[diff]
+    tool = vimdiff
+[init]
+	templatedir = ~/.git_template
+[alias]
+	ctags = !.git/hooks/ctags
+[core]
+	excludesfile = ~/.gitignore

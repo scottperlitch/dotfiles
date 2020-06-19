@@ -6,9 +6,6 @@
 unlet! skip_defaults_vim
 silent! source $VIMRUNTIME/defaults.vim
 
-" 3 Tags
-set tags^=.git/tags
-
 " ------------------------------------------------
 " Mappings
 " ------------------------------------------------
