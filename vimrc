@@ -13,7 +13,7 @@ silent! source $VIMRUNTIME/defaults.vim
 " Set leader key
 let mapleader=','
 
-" Repeat latest f (etc) in opposite direction
+" Repeat last `f` in opposite direction
 nnoremap \ ,
 
 " Paste and indent
@@ -22,9 +22,6 @@ nnoremap p p=`]
 " Yank to system clipboard
 vnoremap <leader>y "*y
 nnoremap <leader>y viw"*y
-
-" Cut to system clipboard
-vnoremap <leader>d "*d
 
 " Paste from system clipboard and indent
 nnoremap <leader>p "*p=`]
@@ -86,11 +83,9 @@ let g:vue_pre_processors = []
 
 " Fzf.vim
 nnoremap <leader>a :Files!<cr>
-nnoremap <leader>A :GFiles!<cr>
 nnoremap <leader>s :Buffers!<cr>
 nnoremap <leader>S :History!<cr>
 nnoremap <leader>t yiw:Tags <c-r>" <cr>
 nnoremap <leader>f :Rg!<Space>
 nnoremap <leader>F yiw:Rg! <c-r>"
-vnoremap <leader>F y:Rg! <c-r>"
 nnoremap <leader>x yiw:Rg! function <c-r>"(
