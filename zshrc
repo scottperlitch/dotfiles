@@ -47,14 +47,13 @@ source $ZSH/oh-my-zsh.sh
 # ------------------------------------------------
 # phpunit
 # ------------------------------------------------
-t() {
+pu() {
     if [ -z "$1" ]; then
         vendor/bin/phpunit --stop-on-failure --stop-on-error
     else
         vendor/bin/phpunit --stop-on-failure --stop-on-error --filter "$1"
     fi
 }
-alias td="vendor/bin/phpunit"
 
 # ------------------------------------------------
 # ripgrep
