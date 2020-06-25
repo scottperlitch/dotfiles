@@ -1,3 +1,18 @@
+"
+" File: vimrc
+" -----------
+" The goal of this vim configuration is to stay as close to the defaults as
+" possible and keep only the most used and beneficial additions.
+" Default options in Vim 8+ are solid. Mappings try to use left half of
+" keyboard for frequently used operations given that the map leader key (,)
+" requires a right hand movement. Mappings for the home row on the left half
+" of the keyboard (asdf) are further prioritized for the most frequent and/or
+" important operations; in this case file browsing, file jumping and project
+" wide search. Remapping Caps Lock to Escape is also ideal as it is in the
+" home row and used frequently (this can be done through most operating
+" systems). Tags are setup using git hooks and ctags.
+"
+
 " ------------------------------------------------
 " Options
 " ------------------------------------------------
@@ -16,14 +31,14 @@ let mapleader=','
 " Repeat last `f` in opposite direction
 nnoremap \ ,
 
-" Paste and indent
+" Put and indent
 nnoremap p p=`]
 
 " Yank to system clipboard
 vnoremap <leader>y "*y
 nnoremap <leader>y viw"*y
 
-" Paste from system clipboard and indent
+" Put from system clipboard and indent
 nnoremap <leader>p "*p=`]
 
 " Write Buffer
@@ -54,10 +69,10 @@ nnoremap <leader>e :edit $MYVIMRC<cr>
 " Alernate file
 nnoremap <leader>d :edit #<cr>
 
-" Open project root directory
+" Open project root directory in Finder
 nnoremap <leader>o :!open .<cr>
 
-" Open current files parent directory
+" Open current file's parent directory in Finder
 nnoremap <leader>O :!open %:h<cr>
 
 " Buffer next
