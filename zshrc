@@ -8,9 +8,10 @@ alias dump="composer dump-autoload"
 # dir
 # ------------------------------------------------
 alias desk="cd $HOME/Desktop"
+alias dl="cd $HOME/Downloads"
+alias o="open ."
 alias proj="cd $HOME/Projects"
 alias sites="cd $HOME/Projects/Sites"
-alias o="open ."
 
 # ------------------------------------------------
 # gem
