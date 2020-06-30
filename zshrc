@@ -23,20 +23,19 @@ export GEM_HOME="$HOME/.gem"
 # ------------------------------------------------
 alias d="git difftool"
 alias g="git status"
-alias diff="git difftool"
+alias gco="git checkout"
 alias gmod="vim \$(git ls-files -m)"
 alias gnew="vim \$(git ls-files --others --exclude-standard)"
-alias gco="git checkout"
 alias gpo="git push origin"
 
 # ------------------------------------------------
 # laravel
 # ------------------------------------------------
-alias tinker="php artisan tinker"
 alias artisan="php artisan"
-alias rollback="php artisan migrate:rollback"
 alias migrate="php artisan migrate"
+alias rollback="php artisan migrate:rollback"
 alias seed="php artisan db:seed"
+alias tinker="php artisan tinker"
 
 # ------------------------------------------------
 # oh-my-zsh
