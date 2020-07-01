@@ -31,16 +31,6 @@ let mapleader=','
 " Repeat last `f` in opposite direction
 nnoremap \ ,
 
-" Put and indent
-nnoremap p p=`]
-
-" Yank to system clipboard
-vnoremap <leader>y "*y
-nnoremap <leader>y viw"*y
-
-" Put from system clipboard and indent
-nnoremap <leader>p "*p=`]
-
 " Write Buffer
 inoremap ,w <esc>:write<cr>
 nnoremap <leader>w :write!<cr>
@@ -50,30 +40,36 @@ vnoremap <leader>w :write!<cr>
 nnoremap <leader>q :quit<cr>
 nnoremap <leader>Q :quitall<cr>
 
-" Yank until end of line
-nnoremap Y y$
-nnoremap <leader>Y "*y$
+" Yank to system clipboard
+vnoremap <leader>y "*y
+nnoremap <leader>y viw"*y
+
+" Put and auto indent
+nnoremap p p=`]
+
+" Put from system clipboard and indent
+nnoremap <leader>p "*p=`]
+
+" Jump to alternate file
+nnoremap <leader>d :edit #<cr>
 
 " Auto close brackets on carriage return
 inoremap {<cr> {<cr>}<esc>O
 
-" Search buffer for visually selected text
-vnoremap // y/<c-r>"<cr>
-
-" Reload vimrc
-nnoremap <leader>r :source $MYVIMRC<cr>
-
 " Edit vimrc
 nnoremap <leader>e :edit $MYVIMRC<cr>
 
-" Alernate file
-nnoremap <leader>d :edit #<cr>
+" Reload vimrc
+nnoremap <leader>r :source $MYVIMRC<cr>
 
 " Open project root directory in Finder
 nnoremap <leader>o :!open .<cr>
 
 " Open current file's parent directory in Finder
 nnoremap <leader>O :!open %:h<cr>
+
+" Search buffer for visually selected text
+vnoremap // y/<c-r>"<cr>
 
 " Buffer next
 nnoremap <leader>l :bnext<cr>
