@@ -4,7 +4,7 @@ PATH="/usr/local/bin:$PATH"
 trap 'rm -f "$$.tags"' EXIT
 
 # To include tags for git files and composer packages:
-{ git ls-files & find -L vendor | ag -Q '.php'; } | \
+{ git ls-files & find vendor -type f -name '*.php'; } | \
     ctags --tag-relative -L - -f"$$.tags" --languages=-javascript,sql
     mv "$$.tags" "tags"
 
