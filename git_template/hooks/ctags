@@ -5,10 +5,10 @@ trap 'rm -f "$$.tags"' EXIT
 
 # To include tags for git files and composer packages:
 { git ls-files & find vendor -type f -name '*.php'; } | \
-    ctags --tag-relative -L - -f"$$.tags" --languages=-javascript,sql
+    ctags --tag-relative -L - -f "$$.tags"
     mv "$$.tags" "tags"
 
 # To include tags for only git files:
 # git ls-files | \
-#   ctags --tag-relative -L - -f"$$.tags" --languages=-javascript,sql
+#   ctags --tag-relative -L - -f "$$.tags"
 #   mv "$$.tags" "tags"
