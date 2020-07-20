@@ -97,6 +97,7 @@ nnoremap <leader>a :Files!<cr>
 nnoremap <leader>s :Buffers!<cr>
 nnoremap <leader>S :History!<cr>
 nnoremap <leader>t yiw:Tags <c-r>" <cr>
+nnoremap <leader>T :BTags!<cr>
 nnoremap <leader>f :Rg!<Space>
 nnoremap <leader>F yiw:Rg! <c-r>"
 nnoremap <leader>x yiw:Rg! function <c-r>"(
