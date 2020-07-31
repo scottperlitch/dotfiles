@@ -1,6 +1,3 @@
-[user]
-	name = Scott Perlitch
-	email = scottperlitch@gmail.com
 [diff]
     tool = vimdiff
 [init]
