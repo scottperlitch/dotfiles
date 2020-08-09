@@ -14,6 +14,11 @@ alias proj="cd $HOME/Projects"
 alias sites="cd $HOME/Projects/Sites"
 
 # ------------------------------------------------
+# fzf
+# ------------------------------------------------
+export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
+
+# ------------------------------------------------
 # gem
 # ------------------------------------------------
 export GEM_HOME="$HOME/.gem"
