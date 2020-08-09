@@ -16,7 +16,7 @@ alias sites="cd $HOME/Projects/Sites"
 # ------------------------------------------------
 # fzf
 # ------------------------------------------------
-export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
+export FZF_DEFAULT_COMMAND='rg --ignore -l ""'
 
 # ------------------------------------------------
 # gem

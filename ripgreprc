@@ -1,5 +1,4 @@
 --colors=path:fg:green
---hidden
 --no-ignore-vcs
 --max-columns=150
 --max-columns-preview
