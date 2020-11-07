@@ -9,6 +9,7 @@ alias dump="composer dump-autoload"
 # ------------------------------------------------
 alias desk="cd $HOME/Desktop"
 alias dl="cd $HOME/Downloads"
+alias dotfiles="cd $HOME/Projects/dotfiles"
 alias o="open ."
 alias proj="cd $HOME/Projects"
 alias sites="cd $HOME/Projects/Sites"
