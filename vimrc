@@ -21,6 +21,10 @@
 unlet! skip_defaults_vim
 silent! source $VIMRUNTIME/defaults.vim
 
+" 13 Editing text
+set undofile
+set undodir=~/.vim/undo
+
 " ------------------------------------------------
 " Mappings
 " ------------------------------------------------
@@ -56,6 +60,9 @@ nnoremap <leader>d :edit #<cr>
 " Auto close brackets on carriage return
 inoremap {<cr> {<cr>}<esc>O
 
+" Quick arrow insert
+inoremap <leader>. <space>=><space>
+
 " Edit vimrc
 nnoremap <leader>e :edit $MYVIMRC<cr>
 
@@ -78,6 +85,17 @@ nnoremap <leader>l :bnext<cr>
 nnoremap <leader>h :bprevious<cr>
 
 " ------------------------------------------------
+" Auto Commands
+" ------------------------------------------------
+autocmd FileType javascript setlocal iskeyword+=-
+autocmd FileType vue setlocal iskeyword+=-
+
+" ------------------------------------------------
+" Commands
+" ------------------------------------------------
+com! FormatXML :%s/>\s*</>\r</g
+
+" ------------------------------------------------
 " Plugins
 " ------------------------------------------------
 
@@ -94,6 +112,7 @@ let g:vue_pre_processors = []
 
 " Fzf.vim
 nnoremap <leader>a :Files!<cr>
+nnoremap <leader>A yiw:find ./**/<c-r>"
 nnoremap <leader>s :Buffers!<cr>
 nnoremap <leader>S :History!<cr>
 nnoremap <leader>t yiw:Tags <c-r>" <cr>

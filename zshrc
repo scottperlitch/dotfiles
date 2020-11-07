@@ -37,7 +37,10 @@ alias gpo="git push origin"
 # laravel
 # ------------------------------------------------
 alias artisan="php artisan"
+alias fresh="php artisan migrate:fresh"
+alias logs="tail -f storage/logs/laravel.log"
 alias migrate="php artisan migrate"
+alias optimize="php artisan optimize"
 alias rollback="php artisan migrate:rollback"
 alias seed="php artisan db:seed"
 alias tinker="php artisan tinker"
@@ -81,7 +84,7 @@ v() {
 # zshrc
 # ------------------------------------------------
 alias c="vim ~/.zshrc"
-alias zshrc="vim ~/.zshrc"
+alias s="source ~/.zshrc"
 
 # ------------------------------------------------
 # zshrc.local
