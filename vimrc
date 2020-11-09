@@ -87,6 +87,7 @@ nnoremap <leader>h :bprevious<cr>
 " ------------------------------------------------
 " Auto Commands
 " ------------------------------------------------
+autocmd FileType blade setlocal iskeyword+=-
 autocmd FileType javascript setlocal iskeyword+=-
 autocmd FileType vue setlocal iskeyword+=-
 

@@ -35,6 +35,11 @@ alias gnew="vim \$(git ls-files --others --exclude-standard)"
 alias gpo="git push origin"
 
 # ------------------------------------------------
+# homebrew
+# ------------------------------------------------
+export PATH="/usr/local/sbin:$PATH"
+
+# ------------------------------------------------
 # laravel
 # ------------------------------------------------
 alias artisan="php artisan"
