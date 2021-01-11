@@ -99,7 +99,7 @@ autocmd FileType vue setlocal iskeyword+=-
 " ------------------------------------------------
 " Commands
 " ------------------------------------------------
-com! FormatXML :%s/>\s*</>\r</g
+com! XmlFormatter :%s/>\s*</>\r</g
 
 " ------------------------------------------------
 " Plugins
@@ -128,10 +128,6 @@ nnoremap <leader>S :History!<cr>
 nnoremap <leader>f :Find!<space>
 nnoremap <leader>F :FindRegex! <c-r><c-w>
 nnoremap <leader>t :FindRegex! (function\|class\|interface\|trait) <c-r><c-w>[^A-Za-z]<cr>
-
-" nnoremap <leader>t :Ag! (function\|class\|interface\|trait) <c-r><c-w>[^A-Za-z]<cr>
-" nnoremap <leader>f :Rg!<space>
-" nnoremap <leader>F :Rg! <c-r><c-w>
 
 " PHP Namespace
 function! IPhpInsertUse()
