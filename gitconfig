@@ -1,8 +1,9 @@
 [diff]
     tool = vimdiff
 [init]
-	templatedir = ~/.git_template
+    templatedir = ~/.git_template
+    defaultBranch = main
 [alias]
-	ctags = !.git/hooks/ctags
+    ctags = !.git/hooks/ctags
 [core]
-	excludesfile = ~/.gitignore
+    excludesfile = ~/.gitignore
