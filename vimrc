@@ -10,7 +10,7 @@
 " important operations; in this case file browsing, file jumping and project
 " wide search. Remapping Caps Lock to Escape is also ideal as it is in the
 " home row and used frequently (this can be done through most operating
-" systems). Tags are setup using git hooks and ctags.
+" systems).
 "
 
 " ------------------------------------------------
@@ -53,12 +53,17 @@ nnoremap p p=`]
 
 " Put from system clipboard and indent
 nnoremap <leader>p "*p=`]
+vnoremap <leader>p <esc>"*p=`]
+inoremap <leader>p <esc>"*p=`]
 
 " Jump to alternate file
 nnoremap <leader>d :edit #<cr>
 
 " Auto close brackets on carriage return
 inoremap {<cr> {<cr>}<esc>O
+
+" Auto close brackets on carriage return
+inoremap [<cr> [<cr>];<esc>O
 
 " Quick arrow insert
 inoremap <leader>. <space>=><space>
@@ -105,18 +110,32 @@ Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'scottperlitch/editorconfig-vim', { 'branch' : 'keep-filename' }
 Plug 'tomtom/tcomment_vim'
+Plug 'arnaud-lb/vim-php-namespace'
+Plug 'ludovicchabant/vim-gutentags'
 call plug#end()
 
-" Vim-polyglot
+" Polyglot
 let g:vue_pre_processors = []
 
-" Fzf.vim
+" Fzf
+command! -bang -nargs=* Find call fzf#vim#grep("rg --fixed-strings --color=always -- ".shellescape(<q-args>), 1, fzf#vim#with_preview('right:50%'), <bang>0)
+command! -bang -nargs=* FindRegex call fzf#vim#grep("rg --case-sensitive --color=always -- ".shellescape(<q-args>), 1, fzf#vim#with_preview('right:50%'), <bang>0)
 nnoremap <leader>a :Files!<cr>
-nnoremap <leader>A yiw:find ./**/<c-r>"
+nnoremap <leader>A :find ./**/<c-r><c-w>
 nnoremap <leader>s :Buffers!<cr>
 nnoremap <leader>S :History!<cr>
-nnoremap <leader>t yiw:Tags <c-r>" <cr>
-nnoremap <leader>T :BTags!<cr>
-nnoremap <leader>f :Rg!<Space>
-nnoremap <leader>F yiw:Rg! <c-r>"
-nnoremap <leader>x yiw:Rg! function <c-r>"(
+nnoremap <leader>f :Find!<space>
+nnoremap <leader>F :FindRegex! <c-r><c-w>
+nnoremap <leader>t :FindRegex! (function\|class\|interface\|trait) <c-r><c-w>[^A-Za-z]<cr>
+
+" nnoremap <leader>t :Ag! (function\|class\|interface\|trait) <c-r><c-w>[^A-Za-z]<cr>
+" nnoremap <leader>f :Rg!<space>
+" nnoremap <leader>F :Rg! <c-r><c-w>
+
+" PHP Namespace
+function! IPhpInsertUse()
+    call PhpInsertUse()
+    call feedkeys('a',  'n')
+endfunction
+autocmd FileType php inoremap <leader>u <esc>:call IPhpInsertUse()<cr>
+autocmd FileType php noremap <leader>u :call PhpInsertUse()<cr>

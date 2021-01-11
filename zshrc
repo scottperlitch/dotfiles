@@ -37,7 +37,9 @@ alias gpo="git push origin"
 # ------------------------------------------------
 # laravel
 # ------------------------------------------------
+alias a="php artisan"
 alias artisan="php artisan"
+alias clean="php artisan cache:clear"
 alias fresh="php artisan migrate:fresh"
 alias logs="tail -f storage/logs/laravel.log"
 alias migrate="php artisan migrate"
@@ -45,6 +47,7 @@ alias optimize="php artisan optimize"
 alias rollback="php artisan migrate:rollback"
 alias seed="php artisan db:seed"
 alias tinker="php artisan tinker"
+alias test="php artisan test"
 
 # ------------------------------------------------
 # oh-my-zsh
@@ -56,7 +59,7 @@ source $ZSH/oh-my-zsh.sh
 # ------------------------------------------------
 # phpunit
 # ------------------------------------------------
-pu() {
+t() {
     if [ -z "$1" ]; then
         vendor/bin/phpunit --stop-on-failure --stop-on-error
     else

@@ -1,6 +1,8 @@
---colors=path:fg:green
---case-sensitive
---no-ignore
 --max-columns=150
 --max-columns-preview
---fixed-strings
+--colors=path:fg:green
+--glob=!tags
+--glob=!node_modules
+--glob=!composer.lock
+--glob=!package-lock.json
+--no-ignore
