@@ -2,6 +2,7 @@
 --max-columns-preview
 --colors=path:fg:green
 --glob=!tags
+--column
 --glob=!node_modules
 --glob=!composer.lock
 --glob=!package-lock.json

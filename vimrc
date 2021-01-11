@@ -118,6 +118,14 @@ call plug#end()
 " Polyglot
 let g:vue_pre_processors = []
 
+" PHP Namespace
+function! IPhpInsertUse()
+    call PhpInsertUse()
+    call feedkeys('a',  'n')
+endfunction
+autocmd FileType php inoremap <leader>u <esc>:call IPhpInsertUse()<cr>
+autocmd FileType php noremap <leader>u :call PhpInsertUse()<cr>
+
 " Fzf
 command! -bang -nargs=* Find call fzf#vim#grep("rg --fixed-strings --color=always -- ".shellescape(<q-args>), 1, fzf#vim#with_preview('right:50%'), <bang>0)
 command! -bang -nargs=* FindRegex call fzf#vim#grep("rg --case-sensitive --color=always -- ".shellescape(<q-args>), 1, fzf#vim#with_preview('right:50%'), <bang>0)
@@ -128,11 +136,3 @@ nnoremap <leader>S :History!<cr>
 nnoremap <leader>f :Find!<space>
 nnoremap <leader>F :FindRegex! <c-r><c-w>
 nnoremap <leader>t :FindRegex! (function\|class\|interface\|trait) <c-r><c-w>[^A-Za-z]<cr>
-
-" PHP Namespace
-function! IPhpInsertUse()
-    call PhpInsertUse()
-    call feedkeys('a',  'n')
-endfunction
-autocmd FileType php inoremap <leader>u <esc>:call IPhpInsertUse()<cr>
-autocmd FileType php noremap <leader>u :call PhpInsertUse()<cr>
