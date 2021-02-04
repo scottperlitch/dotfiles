@@ -21,6 +21,9 @@
 unlet! skip_defaults_vim
 silent! source $VIMRUNTIME/defaults.vim
 
+" 8 terminal
+set title
+
 " 13 Editing text
 set undofile
 set undodir=~/.vim/undo
@@ -47,6 +50,8 @@ nnoremap <leader>Q :quitall<cr>
 " Yank to system clipboard
 vnoremap <leader>y "*y
 nnoremap <leader>y viw"*y
+vnoremap <leader>c "*y
+nnoremap <leader>c viw"*y
 
 " Put and auto indent
 nnoremap p p=`]
@@ -55,6 +60,9 @@ nnoremap p p=`]
 nnoremap <leader>p "*p=`]
 vnoremap <leader>p <esc>"*p=`]
 inoremap <leader>p <esc>"*p=`]
+nnoremap <leader>v "*p=`]
+vnoremap <leader>v <esc>"*p=`]
+inoremap <leader>v <esc>"*p=`]
 
 " Jump to alternate file
 nnoremap <leader>d :edit #<cr>
@@ -89,6 +97,15 @@ nnoremap <leader>l :bnext<cr>
 " Buffer previous
 nnoremap <leader>h :bprevious<cr>
 
+" Yank to end of line
+nnoremap Y y$
+
+" Toggle line number
+nnoremap <leader>1 :set number!<cr>
+
+" Search case-insensitive
+nnoremap ? /\c
+
 " ------------------------------------------------
 " Auto Commands
 " ------------------------------------------------
@@ -100,11 +117,11 @@ autocmd FileType vue setlocal iskeyword+=-
 " Commands
 " ------------------------------------------------
 com! XmlFormatter :%s/>\s*</>\r</g
+com! CopyFilename :let @+=expand('%')
 
 " ------------------------------------------------
 " Plugins
 " ------------------------------------------------
-
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
@@ -113,6 +130,7 @@ Plug 'scottperlitch/editorconfig-vim', { 'branch' : 'keep-filename' }
 Plug 'tomtom/tcomment_vim'
 Plug 'arnaud-lb/vim-php-namespace'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'tpope/vim-abolish'
 call plug#end()
 
 " Polyglot
@@ -127,12 +145,14 @@ autocmd FileType php inoremap <leader>u <esc>:call IPhpInsertUse()<cr>
 autocmd FileType php noremap <leader>u :call PhpInsertUse()<cr>
 
 " Fzf
-command! -bang -nargs=* Find call fzf#vim#grep("rg --fixed-strings --color=always -- ".shellescape(<q-args>), 1, fzf#vim#with_preview('right:50%'), <bang>0)
+command! -bang -nargs=* Find call fzf#vim#grep("rg --fixed-strings --ignore-case --color=always -- ".shellescape(<q-args>), 1, fzf#vim#with_preview('right:50%'), <bang>0)
 command! -bang -nargs=* FindRegex call fzf#vim#grep("rg --case-sensitive --color=always -- ".shellescape(<q-args>), 1, fzf#vim#with_preview('right:50%'), <bang>0)
 nnoremap <leader>a :Files!<cr>
 nnoremap <leader>A :find ./**/<c-r><c-w>
 nnoremap <leader>s :Buffers!<cr>
 nnoremap <leader>S :History!<cr>
 nnoremap <leader>f :Find!<space>
+vnoremap <leader>F y:Find! <c-r>"
 nnoremap <leader>F :FindRegex! <c-r><c-w>
-nnoremap <leader>t :FindRegex! (function\|class\|interface\|trait) <c-r><c-w>[^A-Za-z]<cr>
+nnoremap <leader>x :Find! function<space>
+nnoremap <leader>t :FindRegex! (function\|class\|interface\|trait) <c-r><c-w>(\s\|\(\|$)<cr>
