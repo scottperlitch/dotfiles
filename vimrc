@@ -71,7 +71,7 @@ nnoremap <leader>d :edit #<cr>
 inoremap {<cr> {<cr>}<esc>O
 
 " Auto close brackets on carriage return
-inoremap [<cr> [<cr>];<esc>O
+" inoremap [<cr> [<cr>];<esc>O
 
 " Quick arrow insert
 inoremap <leader>. <space>=><space>
@@ -105,6 +105,9 @@ nnoremap <leader>1 :set number!<cr>
 
 " Search case-insensitive
 nnoremap ? /\c
+
+" Remap 0 to first char of line
+nnoremap 0 ^
 
 " ------------------------------------------------
 " Auto Commands
@@ -142,11 +145,16 @@ function! IPhpInsertUse()
     call feedkeys('a',  'n')
 endfunction
 autocmd FileType php inoremap <leader>u <esc>:call IPhpInsertUse()<cr>
-autocmd FileType php noremap <leader>u :call PhpInsertUse()<cr>
+autocmd FileType php nnoremap <leader>u :call PhpInsertUse()<cr>
 
 " Fzf
-command! -bang -nargs=* Find call fzf#vim#grep("rg --fixed-strings --ignore-case --color=always -- ".shellescape(<q-args>), 1, fzf#vim#with_preview('right:50%'), <bang>0)
-command! -bang -nargs=* FindRegex call fzf#vim#grep("rg --case-sensitive --color=always -- ".shellescape(<q-args>), 1, fzf#vim#with_preview('right:50%'), <bang>0)
+command! -bang -nargs=* Find call fzf#vim#grep("rg --fixed-strings --ignore-case --color=always -- ".shellescape(<q-args>),1,fzf#vim#with_preview(),<bang>0)
+command! -bang -nargs=* FindRegex call fzf#vim#grep("rg --case-sensitive --color=always -- ".shellescape(<q-args>),1,fzf#vim#with_preview(),<bang>0)
+command! -bang -nargs=* GoToFile call fzf#vim#files('.',fzf#vim#with_preview({'options': ['--query', substitute(expand('<cword>'),'-','','g')]}),<bang>0)
+
+autocmd FileType php nnoremap <leader>t :FindRegex! (function\|class\|interface\|trait) <c-r><c-w>(\s\|\(\|$)<cr>
+autocmd FileType vue nnoremap <leader>t :GoToFile!<cr>
+
 nnoremap <leader>a :Files!<cr>
 nnoremap <leader>A :find ./**/<c-r><c-w>
 nnoremap <leader>s :Buffers!<cr>
@@ -155,4 +163,3 @@ nnoremap <leader>f :Find!<space>
 vnoremap <leader>F y:Find! <c-r>"
 nnoremap <leader>F :FindRegex! <c-r><c-w>
 nnoremap <leader>x :Find! function<space>
-nnoremap <leader>t :FindRegex! (function\|class\|interface\|trait) <c-r><c-w>(\s\|\(\|$)<cr>
