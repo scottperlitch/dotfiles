@@ -152,8 +152,8 @@ command! -bang -nargs=* Find call fzf#vim#grep("rg --fixed-strings --ignore-case
 command! -bang -nargs=* FindRegex call fzf#vim#grep("rg --case-sensitive --color=always -- ".shellescape(<q-args>),1,fzf#vim#with_preview(),<bang>0)
 command! -bang -nargs=* GoToFile call fzf#vim#files('.',fzf#vim#with_preview({'options': ['--query', substitute(expand('<cword>'),'-','','g')]}),<bang>0)
 
-autocmd FileType php nnoremap <leader>t :FindRegex! (function\|class\|interface\|trait) <c-r><c-w>(\s\|\(\|$)<cr>
-autocmd FileType vue nnoremap <leader>t :GoToFile!<cr>
+nnoremap <leader>t :FindRegex! (function\|class\|interface\|trait) <c-r><c-w>(\s\|\(\|$)<cr>
+nnoremap <leader>g :GoToFile!<cr>
 
 nnoremap <leader>a :Files!<cr>
 nnoremap <leader>A :find ./**/<c-r><c-w>
