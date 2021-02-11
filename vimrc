@@ -150,11 +150,13 @@ autocmd FileType php nnoremap <leader>u :call PhpInsertUse()<cr>
 " Fzf
 command! -bang -nargs=* Find call fzf#vim#grep("rg --fixed-strings --ignore-case --color=always -- ".shellescape(<q-args>),1,fzf#vim#with_preview(),<bang>0)
 command! -bang -nargs=* FindRegex call fzf#vim#grep("rg --case-sensitive --color=always -- ".shellescape(<q-args>),1,fzf#vim#with_preview(),<bang>0)
-command! -bang -nargs=* FindFile call fzf#vim#files('.',fzf#vim#with_preview({'options': ['--query', substitute(expand('<cword>'),'-','','g')]}),<bang>0)
+command! -bang -nargs=* FindFile call fzf#vim#files('.',fzf#vim#with_preview({'options': ['--query', substitute(expand('<cword>'),'-','','g').'.']}),<bang>0)
 command! -bang -nargs=* FindKey call fzf#vim#grep("rg --case-sensitive --color=always -- '(function|class|interface|trait) ".expand('<cword>')."(\\s|\\(|$)'",1,fzf#vim#with_preview(),<bang>0)
 
 function! Tag()
-    let l:isVueComponent = stridx(expand("<cword>"), '-') != -1
+    let l:attr = synIDattr(synID(line("."), col("."), 1), "name")
+    let l:vueComponents = ['htmlTagName', 'jsModuleKeyword', 'jsObjectShorthandProp']
+    let l:isVueComponent = index(l:vueComponents, l:attr) != -1
     if (l:isVueComponent)
         :FindFile!
     else
@@ -164,7 +166,7 @@ endfunction
 
 nnoremap <leader>t :call Tag()<cr>
 nnoremap <leader>a :Files!<cr>
-nnoremap <leader>A :find ./**/<c-r><c-w>
+nnoremap <leader>g :FindFile!<cr>
 nnoremap <leader>s :Buffers!<cr>
 nnoremap <leader>S :History!<cr>
 nnoremap <leader>f :Find!<space>
