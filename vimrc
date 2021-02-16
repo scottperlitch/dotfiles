@@ -103,14 +103,11 @@ nnoremap Y y$
 " Toggle line number
 nnoremap <leader>1 :set number!<cr>
 
-" Search case-insensitive
-nnoremap ? /\c
-
 " Remap 0 to first char of line
 nnoremap 0 ^
 
 " ------------------------------------------------
-" Auto Commands
+" FileType Keywords
 " ------------------------------------------------
 autocmd FileType blade setlocal iskeyword+=-
 autocmd FileType javascript setlocal iskeyword+=-
@@ -151,7 +148,7 @@ autocmd FileType php nnoremap <leader>u :call PhpInsertUse()<cr>
 command! -bang -nargs=* Find call fzf#vim#grep("rg --fixed-strings --ignore-case --color=always -- ".shellescape(<q-args>),1,fzf#vim#with_preview(),<bang>0)
 command! -bang -nargs=* FindRegex call fzf#vim#grep("rg --case-sensitive --color=always -- ".shellescape(<q-args>),1,fzf#vim#with_preview(),<bang>0)
 command! -bang -nargs=* FindFile call fzf#vim#files('.',fzf#vim#with_preview({'options': ['--query', substitute(expand('<cword>'),'-','','g').'.']}),<bang>0)
-command! -bang -nargs=* FindKey call fzf#vim#grep("rg --case-sensitive --color=always -- '(function|class|interface|trait) ".expand('<cword>')."(\\s|\\(|$)'",1,fzf#vim#with_preview(),<bang>0)
+command! -bang -nargs=* FindSource call fzf#vim#grep("rg --case-sensitive --color=always -- '(function|class|interface|trait) ".expand('<cword>')."(\\s|\\(|$)'",1,fzf#vim#with_preview(),<bang>0)
 
 function! Tag()
     let l:attr = synIDattr(synID(line("."), col("."), 1), "name")
@@ -160,7 +157,7 @@ function! Tag()
     if (l:isVueComponent)
         :FindFile!
     else
-        :FindKey!
+        :FindSource!
     endif
 endfunction
 
