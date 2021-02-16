@@ -106,6 +106,17 @@ nnoremap <leader>1 :set number!<cr>
 " Remap 0 to first char of line
 nnoremap 0 ^
 
+" Re-indent file
+nnoremap <leader>i  mzgg=G`z
+
+" Center next element in a search
+nnoremap n nzz
+nnoremap N Nzz
+
+" Center last and next jump
+nnoremap <C-o> <C-o>zz
+nnoremap <C-i> <C-i>zz
+
 " ------------------------------------------------
 " FileType Keywords
 " ------------------------------------------------
@@ -131,6 +142,7 @@ Plug 'tomtom/tcomment_vim'
 Plug 'arnaud-lb/vim-php-namespace'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'tpope/vim-abolish'
+Plug 'godlygeek/tabular'
 call plug#end()
 
 " Polyglot
