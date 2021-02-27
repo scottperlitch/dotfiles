@@ -48,21 +48,21 @@ nnoremap <leader>q :quit<cr>
 nnoremap <leader>Q :quitall<cr>
 
 " Yank to system clipboard
-vnoremap <leader>y "*y
-nnoremap <leader>y viw"*y
-vnoremap <leader>c "*y
-nnoremap <leader>c viw"*y
+vnoremap <leader>y "+y
+nnoremap <leader>y viw"+y
+vnoremap <leader>c "+y
+nnoremap <leader>c viw"+y
 
 " Put and auto indent
 nnoremap p p=`]
 
 " Put from system clipboard and indent
-nnoremap <leader>p "*p=`]
-vnoremap <leader>p <esc>"*p=`]
-inoremap <leader>p <esc>"*p=`]
-nnoremap <leader>v "*p=`]
-vnoremap <leader>v <esc>"*p=`]
-inoremap <leader>v <esc>"*p=`]
+nnoremap <leader>p "+p=`]
+vnoremap <leader>p <esc>"+p=`]
+inoremap <leader>p <esc>"+p=`]
+nnoremap <leader>v "+p=`]
+vnoremap <leader>v <esc>"+p=`]
+inoremap <leader>v <esc>"+p=`]
 
 " Jump to alternate file
 nnoremap <leader>d :edit #<cr>
@@ -78,9 +78,6 @@ inoremap <leader>. <space>=><space>
 
 " Edit vimrc
 nnoremap <leader>e :edit $MYVIMRC<cr>
-
-" Reload vimrc
-nnoremap <leader>r :source $MYVIMRC<cr>
 
 " Open project root directory in Finder
 nnoremap <leader>o :!open .<cr>
@@ -103,6 +100,9 @@ nnoremap Y y$
 " Toggle line number
 nnoremap <leader>1 :set number!<cr>
 
+" VSCode Theme
+nnoremap <leader>0 :colorscheme codedark \| set number<cr>
+
 " Remap 0 to first char of line
 nnoremap 0 ^
 
@@ -117,18 +117,38 @@ nnoremap N Nzz
 nnoremap <C-o> <C-o>zz
 nnoremap <C-i> <C-i>zz
 
+" Center quick searches
+nnoremap * *zz
+nnoremap # #zz
+
+" Center undo/redo
+" nnoremap u uzz
+" nnoremap <c-r> <c-r>zz
+
+" Artisan
+nnoremap <leader>r :!php artisan<space>
+
+nnoremap <leader>n :!tail -n 75 src/storage/logs/laravel.log<cr>
+
+" Git
+nnoremap <leader>gs :!git status<cr>
+nnoremap <leader>ga :!git add %
+
+" Source vimrc on save
+autocmd! bufwritepost $MYVIMRC source $MYVIMRC
+
 " ------------------------------------------------
 " FileType Keywords
 " ------------------------------------------------
-autocmd FileType blade setlocal iskeyword+=-
-autocmd FileType javascript setlocal iskeyword+=-
-autocmd FileType vue setlocal iskeyword+=-
+autocmd fileType blade setlocal iskeyword+=-
+autocmd fileType javascript setlocal iskeyword+=-
+autocmd fileType vue setlocal iskeyword+=-
 
 " ------------------------------------------------
 " Commands
 " ------------------------------------------------
-com! XmlFormatter :%s/>\s*</>\r</g
-com! CopyFilename :let @+=expand('%')
+command! FormatXML :%s/>\s*</>\r</g
+command! CopyFilename :let @+=expand('%')
 
 " ------------------------------------------------
 " Plugins
@@ -143,6 +163,7 @@ Plug 'arnaud-lb/vim-php-namespace'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'tpope/vim-abolish'
 Plug 'godlygeek/tabular'
+Plug 'tomasiser/vim-code-dark'
 call plug#end()
 
 " Polyglot
@@ -153,8 +174,8 @@ function! IPhpInsertUse()
     call PhpInsertUse()
     call feedkeys('a',  'n')
 endfunction
-autocmd FileType php inoremap <leader>u <esc>:call IPhpInsertUse()<cr>
-autocmd FileType php nnoremap <leader>u :call PhpInsertUse()<cr>
+autocmd fileType php inoremap <leader>u <esc>:call IPhpInsertUse()<cr>
+autocmd fileType php nnoremap <leader>u :call PhpInsertUse()<cr>
 
 " Fzf
 command! -bang -nargs=* Find call fzf#vim#grep("rg --fixed-strings --ignore-case --color=always -- ".shellescape(<q-args>),1,fzf#vim#with_preview(),<bang>0)
@@ -175,7 +196,7 @@ endfunction
 
 nnoremap <leader>t :call Tag()<cr>
 nnoremap <leader>a :Files!<cr>
-nnoremap <leader>g :FindFile!<cr>
+nnoremap <leader>A :FindFile!<cr>
 nnoremap <leader>s :Buffers!<cr>
 nnoremap <leader>S :History!<cr>
 nnoremap <leader>f :Find!<space>
