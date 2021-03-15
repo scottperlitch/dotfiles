@@ -137,6 +137,7 @@ nnoremap <leader>ga :!git add %
 " Source vimrc on save
 autocmd! bufwritepost $MYVIMRC source $MYVIMRC
 
+vnoremap <leader>t :Tabularize /
 " ------------------------------------------------
 " FileType Keywords
 " ------------------------------------------------
